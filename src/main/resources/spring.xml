@@ -1,0 +1,15 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "https://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+    <bean id="controller" class="ma.cigma.tp8.presentation.ClientController"
+          scope="prototype">
+        <constructor-arg ref="service"/>
+    </bean>
+    <bean id="service" class="ma.cigma.tp8.service.ClientServiceImpl"
+          scope="prototype">
+        <constructor-arg ref="repository"/>
+    </bean>
+    <bean id="repository"
+          class="ma.cigma.tp8.dao.ClientDaoImpl"
+          scope="prototype"></bean>
+</beans>
