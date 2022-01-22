@@ -27,8 +27,8 @@ public class FactureDaoImpl implements IFactureDao{
     {
         em.getTransaction().begin();
         Facture currentFacture = em.find(Facture.class,newFacture.getId());
-        currentFacture.setDate(newFacture.getDate());
         currentFacture.setAmount(newFacture.getAmount());
+        currentFacture.setDescription(newFacture.getDescription());
         em.persist(currentFacture);
         em.getTransaction().commit();
         return null;

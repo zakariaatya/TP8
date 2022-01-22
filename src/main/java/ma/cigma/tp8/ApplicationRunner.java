@@ -1,11 +1,18 @@
 package ma.cigma.tp8;
 
 
+import ma.cigma.tp8.models.CarteFidelio;
 import ma.cigma.tp8.models.Client;
+import ma.cigma.tp8.models.Facture;
+import ma.cigma.tp8.models.Promotion;
 import ma.cigma.tp8.presentation.ClientController;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
 
 public class ApplicationRunner
 {
@@ -13,15 +20,11 @@ public class ApplicationRunner
     {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         ClientController ctrl = (ClientController) context.getBean("controller");
-        ctrl.save(new Client("OMAR"));
-        ctrl.save(new Client("SIHAM"));
-        ctrl.save(new Client("AHMED"));
-        ctrl.save(new Client("FARAH"));
 
-
-        ctrl.modify(new Client(1L,"new Name"));
-
-        Client found = ctrl.getById(1L);
-
+        Client client = new Client("Omar");
+        CarteFidelio carteFidelio = new CarteFidelio("A29930489");
+        carteFidelio.setClient(client);
+        client.setCarteFidelio(carteFidelio);
+        ctrl.save(client);
     }
 }

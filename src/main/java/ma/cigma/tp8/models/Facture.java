@@ -2,6 +2,7 @@ package ma.cigma.tp8.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,42 +10,50 @@ import java.util.Date;
 @Entity(name="TFactures")
 @Getter
 @Setter
+@ToString
 public class Facture {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
-    Date date;
-    double amount;
+    private long id;
+    private double amount;
+    private String description;
 
-    public Facture()
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+
+    public Facture() {
+    }
+    @ManyToMany(cascade = {CascadeType.PERSIST})
+    @JoinTable(name = "table_facture_produit",joinColumns = @JoinColumn(
+            name = "facture_fk",
+            referencedColumnName = "id"
+    ),
+            inverseJoinColumns = @JoinColumn(
+                    name="produit_fk",
+                    referencedColumnName = "id"
+            )
+    )
+    private Produit produit;
+
+    public Facture(double v, String facture1)
     {
 
     }
 
-    public Facture(long id,Date date,double amount)
+    public double getAmount()
+    {
+        return amount;
+    }
+
+    public Facture(long id,double amount,String description)
     {
         this.id=id;
-        this.date=date;
         this.amount=amount;
-    }
-
-    public Facture(Date date) {
-        this.date = date;
-    }
-
-    public Facture(double amount) {
-        this.amount = amount;
+        this.description=description;
     }
 
 
-
-    @Override
-    public String toString() {
-        return "Facture{" +
-                "id=" + id +
-                ", date=" + date +
-                ", amount=" + amount +
-                '}';
-    }
 }
