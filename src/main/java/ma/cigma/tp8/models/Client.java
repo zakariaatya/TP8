@@ -2,6 +2,7 @@ package ma.cigma.tp8.models;
 
 
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,11 +14,13 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@Data
 
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Client
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private long id;
 
     public Client(String nom)

@@ -2,11 +2,18 @@ package ma.cigma.tp8.service;
 
 import ma.cigma.tp8.models.Client;
 import ma.cigma.tp8.dao.IClientDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+
+@Transactional
 public class ClientServiceImpl implements IClientService
 {
+    @Autowired
     private IClientDao dao;
 
     public ClientServiceImpl(IClientDao dao) {

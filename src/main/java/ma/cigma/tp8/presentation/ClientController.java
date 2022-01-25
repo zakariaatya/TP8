@@ -2,9 +2,13 @@ package ma.cigma.tp8.presentation;
 
 import ma.cigma.tp8.models.Client;
 import ma.cigma.tp8.service.IClientService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+@Controller("ctrl1")
 public class ClientController
 {
+    @Autowired
     private IClientService service;
 
     public ClientController(IClientService service) {

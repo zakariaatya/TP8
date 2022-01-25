@@ -1,23 +1,25 @@
 package ma.cigma.tp8.dao;
 
 import ma.cigma.tp8.models.Client;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Repository
 public class ClientDaoImpl implements IClientDao
 {
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("unit_clients");
-    EntityManager em = emf.createEntityManager();
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     public Client save(Client c)
     {
-        em.getTransaction().begin();
         em.persist(c);
-        em.getTransaction().commit();
         return null;
     }
 

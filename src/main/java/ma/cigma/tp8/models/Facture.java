@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity(name="TFactures")
 @Getter
@@ -36,7 +37,7 @@ public class Facture {
                     referencedColumnName = "id"
             )
     )
-    private Produit produit;
+    private List<Produit> produit;
 
     public Facture(double v, String facture1)
     {

@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,7 +25,7 @@ public class Produit {
 
     @ManyToMany
     @JoinColumn(name = "facture_id")
-    private Facture facture;
+    private List<Facture> facture;
 
     public Produit(long id,String nom,double price)
     {
