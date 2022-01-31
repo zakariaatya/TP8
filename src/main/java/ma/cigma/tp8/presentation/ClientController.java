@@ -5,20 +5,15 @@ import ma.cigma.tp8.service.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
 @Controller("ctrl1")
 public class ClientController
 {
     @Autowired
     private IClientService service;
 
-    public ClientController(IClientService service) {
-        this.service = service;
-    }
 
-    public void setService(IClientService service)
-    {
-        this.service=service;
-    }
     public void save(Client c)
     {
         service.save(c);
@@ -35,6 +30,8 @@ public class ClientController
     {
         return service.getById(id);
     }
-    void getAll(){}
+    public List<Client> getAll(){
+        return service.getAll();
+    }
 
 }

@@ -9,35 +9,29 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-
-@Transactional
 public class ClientServiceImpl implements IClientService
 {
     @Autowired
     private IClientDao dao;
 
-    public ClientServiceImpl(IClientDao dao) {
-        this.dao = dao;
-    }
-
-    public void setDao(IClientDao dao)
-    {
-        this.dao=dao;
-    }
-
     @Override
+    @Transactional
     public Client save(Client c)
     {
         return dao.save(c);
     }
 
     @Override
+    @Transactional
     public Client modify(Client c)
     {
-        return dao.update(c);
+        Client old=dao.findById(c.getId()).get();
+        old.setNom(c.getNom());
+        return dao.save(old);
     }
 
     @Override
+    @Transactional
     public void removeById(long id)
     {
         dao.deleteById(id);
@@ -46,11 +40,11 @@ public class ClientServiceImpl implements IClientService
     @Override
     public Client getById(long id)
     {
-        return dao.findById(id);
+        return dao.findById(id).get();
     }
 
     @Override
     public List<Client> getAll() {
-        return null;
+        return (List<Client>) dao.findAll();
     }
 }

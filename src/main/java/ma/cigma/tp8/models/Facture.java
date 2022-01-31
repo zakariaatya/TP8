@@ -11,7 +11,7 @@ import java.util.List;
 @Entity(name="TFactures")
 @Getter
 @Setter
-@ToString
+
 public class Facture {
 
     @Id

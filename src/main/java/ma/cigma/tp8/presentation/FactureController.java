@@ -2,9 +2,14 @@ package ma.cigma.tp8.presentation;
 
 import ma.cigma.tp8.models.Facture;
 import ma.cigma.tp8.service.IFactureService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
+@Controller
 public class FactureController {
-
+    @Autowired
     private IFactureService service;
 
     public void setService(IFactureService service)
@@ -27,5 +32,8 @@ public class FactureController {
     {
         return service.getById(id);
     }
-    void getAll(){}
+    public List<Facture> getAll()
+    {
+        return service.getAll();
+    }
 }

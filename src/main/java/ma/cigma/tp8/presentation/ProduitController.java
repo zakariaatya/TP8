@@ -2,15 +2,17 @@ package ma.cigma.tp8.presentation;
 
 import ma.cigma.tp8.models.Produit;
 import ma.cigma.tp8.service.IProduitService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
+@Controller
 public class ProduitController {
-
+    @Autowired
     private IProduitService servie;
 
-    public void setServie(IProduitService servie)
-    {
-        this.servie=servie;
-    }
+    public void setServie(IProduitService servie) {this.servie=servie;}
     public void save(Produit p)
     {
         servie.save(p);
@@ -27,5 +29,8 @@ public class ProduitController {
     {
         return servie.getById(id);
     }
-    void getAll(){}
+    public List<Produit> getAll()
+    {
+        return servie.getAll();
+    }
 }

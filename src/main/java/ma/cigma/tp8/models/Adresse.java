@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity(name = "Adresse")
 @Getter
 @Setter
-@ToString
+
 
 public class Adresse {
     @Id

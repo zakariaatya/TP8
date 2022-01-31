@@ -13,7 +13,6 @@ import java.util.List;
 @Entity(name="TClients")
 @Getter
 @Setter
-@ToString
 @Data
 
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -31,6 +30,14 @@ public class Client
     public Client(long id,String nom) {
         this.id = id;
         this.nom=nom;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                '}';
     }
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "client")
