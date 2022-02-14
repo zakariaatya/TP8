@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@IdClass(CompanyId.class)
+
 
 public class Company {
     @EmbeddedId
