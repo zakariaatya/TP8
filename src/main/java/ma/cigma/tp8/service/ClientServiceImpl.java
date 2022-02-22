@@ -47,4 +47,9 @@ public class ClientServiceImpl implements IClientService
     public List<Client> getAll() {
         return (List<Client>) dao.findAll();
     }
+
+    @Override
+    public Client getOne(long id) {
+        return dao.findById(id).get();
+    }
 }

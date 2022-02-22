@@ -8,8 +8,8 @@ spring:
     url: jdbc:mysql://localhost:3306/pfe
     username: root
     password:
-jpa:
-  show_sql: true
-  generate-ddl: true
-  hibernate:
-    ddl-auto: create
+  jpa:
+    show_sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create

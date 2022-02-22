@@ -12,4 +12,6 @@ public interface IClientService
     void removeById(long id);
     Client getById(long id);
     List<Client> getAll();
+
+    Client getOne(long id);
 }
