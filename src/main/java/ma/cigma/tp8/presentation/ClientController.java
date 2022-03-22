@@ -46,5 +46,4 @@ public class ClientController
     {
         return service.getAll();
     }
-
 }
